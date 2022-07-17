@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Complex Components</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;700&family=Playfair+Display+SC:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></root>
+    <script type="text/babel">
+        class ListStudents extends React.Component{
+            render(){
+                return <div>
+                <b>{this.props.title}</b>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Age</td>
+                            <td>City</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Daniel</td>
+                            <td>25</td>
+                            <td>London</td>
+                        </tr>
+                        <tr>
+                            <td>Karl</td>
+                            <td>24</td>
+                            <td>Greece</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>;
+            }
+        }
+
+        class RowCreator extends React.Component{
+            render(){
+                var student = this.props.item;
+                return <tr>
+                        <td>{student.name}</td>
+                        <td>{student.age}</td>
+                        <td>{student.city}</td>
+                        </tr>;
+            }
+        }
+
+        class ListStudentsDynamic extends React.Component{
+            render(){
+                var students = [{name:"Doug", age:"40", city:"London"},
+                                {name:"John", age:"35", city:"Paris"},
+                                {name:"Mary", age:"30", city:"Berlin"}];
+
+                return <div>
+                <b>{this.props.title}</b>
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Name</td>
+                            <td>Age</td>
+                            <td>City</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {students.map(student => <RowCreator item={student}/>
+                        )}
+                    </tbody>
+                </table>
+                </div>;
+            }
+        }
+
+        ReactDOM.render(<div>
+                        <ListStudents title="Table of students"/><br/><br/>
+                        <ListStudentsDynamic title="Dynamic table of students"/>
+                        </div> 
+                        , document.getElementById("root"));
+    </script>
+</body>
+</html>

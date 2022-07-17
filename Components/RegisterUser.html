@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Complex Components</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        #root input {
+            margin-left: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></root>
+    <script type="text/babel">
+        class Login extends React.Component{
+            handleSubmit() {
+                alert('Submitted');
+                console.log(event.type);
+                console.log(this);
+            }
+
+            render(){
+                return <div> 
+                    <h1>{this.props.title}</h1>
+                    <label>First Name : </label>
+                    <input type="text"/>
+                    <br/><br/>
+                    <label>Last Name : </label>
+                    <input type="text"/>
+                    <br/><br/>
+                    <label>Email : </label>
+                    <input type="text"/>
+                    <br/><br/>
+                    <label>Password : </label>
+                    <input type="Password"/>
+                    <br/><br/>
+                    <input type="button" value="Submit" onClick={this.handleSubmit.bind(this)}/>
+                    </div>;
+            }
+        }
+
+        ReactDOM.render(<div>
+                        <Login title="Register User :"/>
+                        </div> 
+                        , document.getElementById("root"));
+    </script>
+</body>
+</html>

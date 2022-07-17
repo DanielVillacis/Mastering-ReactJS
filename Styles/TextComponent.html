@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>First Reaction</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;700&family=Playfair+Display+SC:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></root>
+    <script type="text/babel">
+
+        class Text extends React.Component {
+            render() {
+                var textStyle = {
+                    backgroundColor: this.props.bgColor,    // Can asign the color entered in the properties of the component
+                    color: "white",
+                    fontSize: 30,
+                    textAlign: "center",
+                    padding: 10,
+                    margin: 30,
+                };
+
+                return <div style={textStyle}>
+                    {this.props.children}
+                    </div>;
+            }
+        }
+
+        var usa = <Text bgColor="green">USA</Text>;
+
+        ReactDOM.render(<div>
+            {usa}
+            <Text bgColor="black">CANADA</Text>
+            <Text bgColor="purple">BRAZIL</Text>
+            <Text>FRANCE</Text>
+            <Text>GERMANY</Text>
+            </div>, document.getElementById("root"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Complex Components</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;700&family=Playfair+Display+SC:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></root>
+    <script type="text/babel">
+        class Login extends React.Component{
+            render(){
+                return <div> 
+                    <h1>{this.props.title}</h1>
+                    <label>Username : </label>
+                    <input type="text"/>
+                    <br/><br/>
+                    <label>Password : </label>
+                    <input type="Password"/>
+                    <br/><br/>
+                    <input type="button" value="Submit"/>
+                    </div>;
+            }
+        }
+    
+
+        ReactDOM.render(<div>
+                        <Login title="Login to continue"/>
+                        </div> 
+                        , document.getElementById("root"));
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Complex Components</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;700&family=Playfair+Display+SC:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="root"></root>
+    <script type="text/babel">
+        class DisplayCustomer extends React.Component{
+            render(){
+                return <div>
+                    <h1>Customer Details</h1>
+                    <b>Name : {this.props.name}</b><br/>
+                    <b>Email : {this.props.email}</b><br/>
+                    <b>Phone : {this.props.phone}</b><br/>
+                    <DisplayAddress address = {this.props.address}/>
+                    </div> ;
+            }
+        }
+
+        class DisplayAddress extends React.Component{
+            render(){
+                return <div>
+                    <b>Address</b><br/>
+                    <b>Street : {this.props.address.street}</b><br/>
+                    <b>City : {this.props.address.city}</b><br/>
+                    </div>
+            }
+        }
+
+        var address1 = {
+            street : "Spice Wood Springs",
+            city : "Austin"
+        };
+        var address2 = {
+            street : "Mira Mesa Blvd",
+            city : "San Diego"
+        };
+
+        ReactDOM.render(<div>
+                        <DisplayCustomer name="John" email="johndoe@gmail.com" phone="+11233456" address={address1}/>
+                        <DisplayCustomer name="Bob" email="bobsinclair@gmail.com" phone="+5939955663" address={address2}/>
+                        </div> 
+                        , document.getElementById("root"));
+    </script>
+</body>
+</html>
